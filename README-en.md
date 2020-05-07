@@ -10,7 +10,7 @@ Kiss FFT is an FFT library developed by Mark Borgerding
     + KF4Win has a more complete document, you can aquire the usage of those APIs
     + KF4Win provides Startup codes and data, you can freely use them to start using this library
     + KF4Win provides scripts that can compile this library on Windows，you can use __nmake__ to compile KF4Win
-## KF4Win能做一些什么?
+## What can KF4Win do?
 * __KF4Win is an FFT(Fast Fourier Transform) library__
     + KF4Win supports 100% all of the Kiss FFT APIs, you can directly use those APIs, e.g. kiss_fft()
     + KF4Win provides several C++ classes, which allows you to not focus on memory managing or data processing, but the result. Feed it data and it will return the result, simple
