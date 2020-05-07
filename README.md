@@ -3,7 +3,7 @@ A Windows Version of Kiss FFT
 Kiss FFT is an FFT library developed by Mark Borgerding
 * 文档(Documents):
     + zh-cn
-    + [en-us]: https://github.com/ToxicObsidian/KissFFT-For-Windows/README-en.md
+    + [en-us](https://github.com/ToxicObsidian/KissFFT-For-Windows/README-en.md)
 ## 什么是KF4Win?
 * __KF4Win是能够让您轻松部署在Windows下的Kiss FFT库__
     + KF4Win为Kiss FFT库添加了许多面向对象的高级API，可以让您更加快速地上手Kiss FFT
