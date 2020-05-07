@@ -1,0 +1,56 @@
+# This file is used to create
+#	MSVC Win32 Executable files and Shared Libraries
+
+CC = cl
+AR = lib
+LD = link
+
+# Optimize
+# Do not use /sdl, or the CRT functions will be called DEPRECATED
+CFLAGS = /EHsc /Gd /c /O2 /fp:precise /std:c++14 /WX /sdl
+WFLAGS = /D_CRT_SECURE_NO_WARNINGS
+LDFLAGS = /DLL /VERSION:0.1
+LEFLAGS = /SUBSYSTEM:CONSOLE /VERSION:0.1
+UTILDIR = .\utils
+LIBDIR = .\lib
+OBJDIR = .\obj
+EXEDIR = .\exe
+
+GWDSRC = GetWavData.cpp
+GWDEXEOBJ = GetWavData.obj
+GWDEXE = GetWavData.exe
+
+SHARELIB = KissFft4Win.dll
+IMPLIB = kf4win.lib
+STATICLIB = KissFft4Win.lib
+
+
+######################################################
+# 			 Do not change the data below,			 #
+#		unless you know what you are doing now.		 #
+######################################################
+
+all: setenv $(GWDEXE)
+
+# Targets
+$(GWDEXE): $(GWDEXEOBJ)
+	$(LD) $(LEFLAGS) $(OBJDIR)\$(GWDEXEOBJ) /out:$(EXEDIR)\$@
+
+$(GWDEXEOBJ):
+	$(CC) $(WFLAGS) $(CFLAGS) $(UTILDIR)\$(GWDSRC)
+	move $@ $(OBJDIR)\$@
+
+
+setenv:
+	if not exist $(LIBDIR) mkdir $(LIBDIR)
+	if not exist $(OBJDIR) mkdir $(OBJDIR)
+	if not exist $(EXEDIR) mkdir $(EXEDIR)
+
+
+clean:
+	-del /f /q $(LIBDIR)
+	-del /f /q $(OBJDIR)
+	-del /f /q $(EXEDIR)
+	rmdir /q $(LIBDIR)
+	rmdir /q $(OBJDIR)
+	rmdir /q $(EXEDIR)

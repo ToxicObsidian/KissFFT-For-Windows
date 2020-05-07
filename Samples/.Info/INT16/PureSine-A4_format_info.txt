@@ -1,0 +1,7 @@
+====File: .\Samples\INT16\PureSine-A4.wav====
+FormatTag = 1
+Channels = 2
+Samples Per Second = 44100
+Average Bytes Per Second = 176400
+Block Align = 4
+Bits Per Sample = 16

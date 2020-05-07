@@ -1,0 +1,7 @@
+====File: .\Samples\IEEE_FLOAT\PureSine-C5.wav====
+FormatTag = 3
+Channels = 2
+Samples Per Second = 44100
+Average Bytes Per Second = 352800
+Block Align = 8
+Bits Per Sample = 32
