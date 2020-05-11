@@ -15,6 +15,7 @@ UTILDIR = .\utils
 LIBDIR = .\lib
 OBJDIR = .\obj
 EXEDIR = .\exe
+INCDIR = .\include
 
 SHARELIB = KF4Win.dll
 IMPLIB = KF4Win.lib
@@ -53,16 +54,23 @@ setenv:
 	if not exist $(LIBDIR) mkdir $(LIBDIR)
 	if not exist $(OBJDIR) mkdir $(OBJDIR)
 	if not exist $(EXEDIR) mkdir $(EXEDIR)
+	if not exist $(INCDIR) mkdir $(INCDIR)
 
 finalize:
 	move *.obj $(OBJDIR)
 	move *.exp $(LIBDIR)
 	move *.lib $(LIBDIR)
+	copy kiss_fft.h $(INCDIR)\kiss_fft.h
+	copy kiss_fft_4win.h $(INCDIR)\kiss_fft_4win.h
+	copy _kiss_fft_guts.h $(INCDIR)\_kiss_fft_guts.h
+	copy kf4win.h $(INCDIR)\kf4win.h
 
 clean:
 	-del /f /q $(LIBDIR)
 	-del /f /q $(OBJDIR)
 	-del /f /q $(EXEDIR)
+	-del /f /q $(INCDIR)
 	rmdir /S /Q $(LIBDIR)
 	rmdir /S /Q $(OBJDIR)
 	rmdir /S /Q $(EXEDIR)
+	rmdir /S /Q $(INCDIR)
