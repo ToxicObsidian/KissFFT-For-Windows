@@ -1,7 +1,7 @@
 # KissFFT-For-Windows
-A Windows Version of Kiss FFT.
+一个Windows版本的Kiss FFT.
 
-Kiss FFT is an FFT library developed by Mark Borgerding.
+Kiss FFT是一个由Mark Borgerding开发的FFT库.
 
 * 文档(Documents):
     + zh-cn

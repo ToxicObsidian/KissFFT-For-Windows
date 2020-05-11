@@ -16,41 +16,53 @@ LIBDIR = .\lib
 OBJDIR = .\obj
 EXEDIR = .\exe
 
-GWDSRC = GetWavData.cpp
-GWDEXEOBJ = GetWavData.obj
-GWDEXE = GetWavData.exe
-
-SHARELIB = KissFft4Win.dll
-IMPLIB = kf4win.lib
+SHARELIB = KF4Win.dll
+IMPLIB = KF4Win.lib
 STATICLIB = KissFft4Win.lib
 
+SRCFILE = kiss_fft_4win.cpp kiss_fft.cpp kiss_fft_4win_block.cpp kiss_fft_4win_cstyle_api.cpp
+LIBOBJ  = kiss_fft_4win.obj kiss_fft.obj kiss_fft_4win_block.obj kiss_fft_4win_cstyle_api.obj
 
 ######################################################
 # 			 Do not change the data below,			 #
 #		unless you know what you are doing now.		 #
 ######################################################
 
-all: setenv $(GWDEXE)
+
+all: setenv GetWavData.exe $(SHARELIB) $(IMPLIB) finalize
 
 # Targets
-$(GWDEXE): $(GWDEXEOBJ)
-	$(LD) $(LEFLAGS) $(OBJDIR)\$(GWDEXEOBJ) /out:$(EXEDIR)\$@
+$(SHARELIB): KF4Win.obj
+	$(LD) $(LDFLAGS) /IMPLIB:$(IMPLIB) $(LIBOBJ) /out:$(LIBDIR)\$@
 
-$(GWDEXEOBJ):
-	$(CC) $(WFLAGS) $(CFLAGS) $(UTILDIR)\$(GWDSRC)
-	move $@ $(OBJDIR)\$@
+$(STATICLIB): KF4Win.obj
+	$(AR) $(LIBOBJ) /out:$(LIBDIR)\$@
 
+KF4Win.obj:
+	$(CC) $(CFLAGS) $(SRCFILE)
+
+
+# Utilities
+GetWavData.exe: GetWavData.obj
+	$(LD) $(LEFLAGS) GetWavData.obj /out:$(EXEDIR)\$@
+
+GetWavData.obj:
+	$(CC) $(CFLAGS) $(WFLAGS) $(UTILDIR)\GetWavData.cpp
 
 setenv:
 	if not exist $(LIBDIR) mkdir $(LIBDIR)
 	if not exist $(OBJDIR) mkdir $(OBJDIR)
 	if not exist $(EXEDIR) mkdir $(EXEDIR)
 
+finalize:
+	move *.obj $(OBJDIR)
+	move *.exp $(LIBDIR)
+	move *.lib $(LIBDIR)
 
 clean:
 	-del /f /q $(LIBDIR)
 	-del /f /q $(OBJDIR)
 	-del /f /q $(EXEDIR)
-	rmdir /q $(LIBDIR)
-	rmdir /q $(OBJDIR)
-	rmdir /q $(EXEDIR)
+	rmdir /S /Q $(LIBDIR)
+	rmdir /S /Q $(OBJDIR)
+	rmdir /S /Q $(EXEDIR)
