@@ -30,7 +30,7 @@ LIBOBJ  = kiss_fft_4win.obj kiss_fft.obj kiss_fft_4win_block.obj kiss_fft_4win_c
 ######################################################
 
 
-all: setenv GetWavData.exe $(SHARELIB) $(IMPLIB) finalize
+all: setenv GetWavData.exe $(SHARELIB) $(STATICLIB) finalize
 
 # Targets
 $(SHARELIB): KF4Win.obj

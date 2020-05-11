@@ -28,4 +28,27 @@ Kiss FFT is an FFT library developed by Mark Borgerding.
 ## How can I clean the directory of KF4Win?
 * __use:__ `nmake /f Makefile.msc clean`
 
+## For starters
+* __For starters, using the dynamic library link of KF4Win is a good choice.__
+    1. Download and extract the source code.
+        + using __git__ : `git clone https://github.com/ToxicObsidian/KissFFT-For-Windows.git`
+        + using __HTTPS__ : [src code](https://github.com/ToxicObsidian/KissFFT-For-Windows/archive/master.zip)
+    2. Start the prompt of tools for Microsoft Visual Studio.
+    3. Change directory to the source code folder.
+    4. Use __nmake__ to compile : `nmake /f Makefile.msc`.
+    5. Copy files in the __include__ folder to your project folder.
+    6. Copy KF4Win.dll & KF4Win.lib in the __lib__ folder to your project folder.
+    7. Add `#include "kf4win.h"` to your code.
+    8. Link KF4Win.lib
+        + Using Visual Studio GUI
+            + Add `#pragma comment(lib, "KF4Win.lib")` to your code. Copy KF4Win.lib to your Visual Studio lib directory.
+            + Or
+            + __Options > VC++ Directories__, add the folder which includes KF4Win.lib to the Library Directories.
+        + Using prompt of tools for Visual Studio
+            + Use `link ... KF4Win.lib ...`
+    9. Check the result.
+
+## More Documents
+* __Read DOCUMENT.md:__ [Document](DOCUMENT.md)
+
 Copyright © 2019-2020 by Toxic_Obsidian. All rights reserved.
