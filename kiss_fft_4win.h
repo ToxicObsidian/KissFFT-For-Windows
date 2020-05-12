@@ -17,7 +17,6 @@
 
 #include "_kiss_fft_guts.h"
 
-#define T_KISS_FFT_EXPORT
 #ifdef  T_KISS_FFT_EXPORT
 #define T_KF4WIN_EXPORT __declspec(dllexport)
 #else
@@ -209,6 +208,6 @@ extern "C" {
 	void	T_KF4WIN_EXPORT KF_ReleaseContext(const HKF4WIN handle);
 
 	// Release
-	void	T_KF4WIN_EXPORT KF_Release(HKF4WIN handle);
+	void	T_KF4WIN_EXPORT KF_Release(HKF4WIN* handle);
 }
 #endif	//T_KF4WIN_INC__

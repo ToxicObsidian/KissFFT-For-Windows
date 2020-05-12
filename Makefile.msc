@@ -7,7 +7,7 @@ LD = link
 
 # Optimize
 # Do not use /sdl, or the CRT functions will be called DEPRECATED
-CFLAGS = /EHsc /Gd /c /O2 /fp:precise /std:c++14 /WX /sdl
+CFLAGS = /EHsc /Gd /c /O2 /fp:precise /std:c++14 /WX /sdl /DT_KISS_FFT_EXPORT
 WFLAGS = /D_CRT_SECURE_NO_WARNINGS
 LDFLAGS = /DLL /VERSION:0.1
 LEFLAGS = /SUBSYSTEM:CONSOLE /VERSION:0.1

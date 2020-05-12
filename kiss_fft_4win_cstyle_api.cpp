@@ -97,9 +97,9 @@ void KF_ReleaseContext(const HKF4WIN handle) {
 	kf->ReleaseContext();
 }
 
-void KF_Release(HKF4WIN handle) {
-	KF4Win* kf = (KF4Win*)handle;
+void KF_Release(HKF4WIN* handle) {
+	KF4Win* kf = *((KF4Win**)handle);
 	// Call kf4win_fft::Release() automatically
 	SafeDeleteObj(kf);
-	handle = NULL;
+	*handle = NULL;
 }
