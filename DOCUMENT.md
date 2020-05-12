@@ -171,12 +171,12 @@ Kiss FFT的API非常简单，但即便如此，KF4Win还是提供了更加简单
     + 目前, KF4Win只支持其中三种, 即T_INT32, T_FLOAT 和 T_KFCOMPLEX
 * __KFCAPI返回值__
     + KF4Win的CAPI中, 除了0以外的任何值都代表失败
-    |   宏定义    |  值  |    意义        |
-    | :---------- | :--: | ------------: |
-    | KF_OK       |  0   | 成功           |
-    | KFE_NOTINIT |  -1  | 未初始化       |
-    | KFE_ZEROCTX |  -2  | 未创建上下文   |
-    | KFE_OUTMEM  |  -3  | 内存不足       |
-    | KFE_LESSBUF |  -4  | 缓冲区过小     |
-    | KFE_CALL2RD |  -5  | 方法调用了两次  |
-    | KFE_INVPARA |  -6  | 非法参数       |
+        |   宏定义    |  值  |    意义        |
+        | :---------- | :--: | ------------: |
+        | KF_OK       |  0   | 成功           |
+        | KFE_NOTINIT |  -1  | 未初始化       |
+        | KFE_ZEROCTX |  -2  | 未创建上下文   |
+        | KFE_OUTMEM  |  -3  | 内存不足       |
+        | KFE_LESSBUF |  -4  | 缓冲区过小     |
+        | KFE_CALL2RD |  -5  | 方法调用了两次  |
+        | KFE_INVPARA |  -6  | 非法参数       |
