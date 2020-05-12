@@ -65,6 +65,14 @@ int KF_DoProcessEx(const HKF4WIN handle, unsigned long stride) {
 	return KF_OK;
 }
 
+int KF_CleanContext(const HKF4WIN handle){
+	if (handle == NULL)
+		return KFE_NOTINIT;
+	KF4Win* kf = (KF4Win*)handle;
+	kf->CleanContext();
+	return KF_OK;
+}
+
 int KF_GetResult(const HKF4WIN handle, KFComplex* pResult, unsigned long uSizeInUnit, unsigned long* uGetInUnit, bool absproc) {
 	if (handle == NULL)
 		return KFE_NOTINIT;

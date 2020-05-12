@@ -55,24 +55,24 @@ int kf4win_fft::Init(unsigned long nMaxBufferSize) {
 }
 
 
-int kf4win_fft::CreateContext(unsigned long nBufferSize) {
+int kf4win_fft::CreateContext(unsigned long nBufferCount) {
 	if (!this->bInited)
 		return -1;
-	if (nBufferSize * 2 > this->nMaxBufSize)
+	if (nBufferSize * 2 * UNIT_SIZE > this->nMaxBufSize)
 		return -2;
 
 	if (this->pInBuffer || this->pOutBuffer)
 		return -3;
-	
-	if (!SafeMalloc(this->pInBuffer, nBufferSize * 2) || !SafeMalloc(this->pOutBuffer, nBufferSize)) {
+
+	if (!SafeMalloc(this->pInBuffer, nBufferCount * 2 * UNIT_SIZE) || !SafeMalloc(this->pOutBuffer, nBufferCount * UNIT_SIZE)) {
 		SafeFree(this->pInBuffer);
 		SafeFree(this->pOutBuffer);
 		return -4;
 	}
-	this->nContextCount = nBufferSize;
+	this->nContextCount = nBufferCount;
 	// Must do this process, or the data will become trash
-	memset(this->pInBuffer, 0, nBufferSize * 2 * UNIT_SIZE);
-	memset(this->pOutBuffer, 0, nBufferSize * UNIT_SIZE);
+	memset(this->pInBuffer, 0, nBufferCount * 2 * UNIT_SIZE);
+	memset(this->pOutBuffer, 0, nBufferCount * UNIT_SIZE);
 
 	// Current Size
 	this->nInCount = 0;
@@ -216,6 +216,10 @@ int kf4win_fft::Feed(void *pData, unsigned long nCount, int nDataType) {
 
 
 void kf4win_fft::CleanContext() {
+	if(!this->bInited)
+		return;
+	if(!this->pInBuffer || !this->pOutBuffer)
+		return;
 	memset(this->pInBuffer, 0, this->nContextCount * 2);
 	memset(this->pOutBuffer, 0, this->nContextCount * 2);
 	this->npHead = 0;
@@ -269,7 +273,7 @@ int kf4win_fft::GetResult(KFComplex* pResult, unsigned long& nResCount, bool bDo
 	}
 	if (nResCount < this->nOutCount)
 		return -3;
-	
+
 	KFCopyMemory(pResult, this->pOutBuffer, this->nOutCount * UNIT_SIZE);
 
 	if(bDoABSProcess)

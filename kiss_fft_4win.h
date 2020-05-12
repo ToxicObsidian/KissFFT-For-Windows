@@ -97,7 +97,7 @@ public:
 	/* The context behaves like a circle, you can feed more than *nBufferSize* data, but */
 	/*		Kiss FFT will always process the data whose count is less than or equal to *nBufferSize* */
 	_Out_Variable_	int		CreateContext(
-		_In_Const_Variable_			unsigned long nBufferSize);
+		_In_Const_Variable_			unsigned long nBufferCount);
 
 	/* Duplicate data and put them into the queue */
 	/* You can call more than once Feed() and feed data whose count is more than *nBufferSize* */
@@ -194,6 +194,9 @@ extern "C" {
 	// If stride = 1, KF4Win will process every sample. If stride = 2, KF4Win will process every 2rd sample, etc.
 	int		T_KF4WIN_EXPORT KF_DoProcess(const HKF4WIN handle);
 	int		T_KF4WIN_EXPORT KF_DoProcessEx(const HKF4WIN handle, unsigned long stride);
+
+	// Clean the context
+	int 	T_KF4WIN_EXPORT KF_CleanContext(const HKF4WIN handle);
 
 	// Get Data
 	// uSizeInUnit indicates the buffer(pResult) size
