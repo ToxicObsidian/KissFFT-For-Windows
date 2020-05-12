@@ -60,10 +60,10 @@ finalize:
 	move *.obj $(OBJDIR)
 	move *.exp $(LIBDIR)
 	move *.lib $(LIBDIR)
-	copy kiss_fft.h $(INCDIR)\kiss_fft.h
-	copy kiss_fft_4win.h $(INCDIR)\kiss_fft_4win.h
-	copy _kiss_fft_guts.h $(INCDIR)\_kiss_fft_guts.h
-	copy kf4win.h $(INCDIR)\kf4win.h
+	copy /Y kiss_fft.h $(INCDIR)\kiss_fft.h
+	copy /Y kiss_fft_4win.h $(INCDIR)\kiss_fft_4win.h
+	copy /Y _kiss_fft_guts.h $(INCDIR)\_kiss_fft_guts.h
+	copy /Y kf4win.h $(INCDIR)\kf4win.h
 
 clean:
 	-del /f /q $(LIBDIR)

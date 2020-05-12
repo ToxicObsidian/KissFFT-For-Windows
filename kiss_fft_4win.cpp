@@ -58,7 +58,7 @@ int kf4win_fft::Init(unsigned long nMaxBufferSize) {
 int kf4win_fft::CreateContext(unsigned long nBufferCount) {
 	if (!this->bInited)
 		return -1;
-	if (nBufferSize * 2 * UNIT_SIZE > this->nMaxBufSize)
+	if (nBufferCount * 2 * UNIT_SIZE > this->nMaxBufSize)
 		return -2;
 
 	if (this->pInBuffer || this->pOutBuffer)
